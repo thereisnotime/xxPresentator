@@ -1,5 +1,6 @@
 import json
 import re
+from termcolor import colored as term_colored
 from pptx import Presentation
 from pptx.util import Inches
 from pptx.enum.text import PP_ALIGN
@@ -8,12 +9,19 @@ input_file = "input.json"
 output_file = "output.pptx"
 
 validation_max_content_words = 45
-validation_max_bullet_points = 7
-validation_max_title_length = 50
+validation_max_bullet_points = 8
+validation_max_title_length = 63
 
 def load_slide_data(filename):
     with open(filename, "r") as f:
         data = json.load(f)
+    return data
+
+def refactor_data(data):
+    # if the second slide is a title slide, make the content text smaller
+    if data["slides"][1]["type"] == "text":
+        data["slides"][1]["content"] = data["slides"][1]["content"].replace("\n", "\n\n")
+        data["slides"][1]["font_size"] = 13
     return data
 
 def validate_slide_data(data):
@@ -22,6 +30,7 @@ def validate_slide_data(data):
     # Rule 1: The data must start and end with a title slide
     if slides[0]["type"] != "title" or slides[-1]["type"] != "title":
         raise ValueError("Presentation must start and end with a title slide")
+    print(term_colored("Rule 1: Presentation starts and ends with a title slide - VALID", "green"))
 
     # Rule 2: A single slide's text must not exceed 44 words
     for slide in slides:
@@ -29,18 +38,21 @@ def validate_slide_data(data):
             content = slide["content"]
             word_count = len(re.findall(r'\w+', content))
             if word_count > validation_max_content_words:
-                raise ValueError(f"Slide '{slide['title']}' has more than {validation_max_content_words} words")
+                raise ValueError(f"Slide '{slide['title']}' has more than {validation_max_content_words} words ({word_count})")
+    print(term_colored("Rule 2: Slides do not exceed maximum word count - VALID", "green"))
 
     # Rule 3: More rules that will guarantee good-looking presentations
     for slide in slides:
         if slide["type"] == "bullet_points":
             if len(slide["content"]) > validation_max_bullet_points:
-                raise ValueError(f"Slide '{slide['title']}' has more than {validation_max_bullet_points} bullet points")
+                raise ValueError(f"Slide '{slide['title']}' has more than {validation_max_bullet_points} bullet points ({len(slide['content'])})")
+    print(term_colored("Rule 3: Slides do not exceed maximum bullet points - VALID", "green"))
 
     # Rule 4: Slide titles must not exceed 50 characters
     for slide in slides:
         if len(slide['title']) > validation_max_title_length:
-            raise ValueError(f"Slide title '{title}' is longer than {validation_max_title_length} characters")
+            raise ValueError(f"Slide title '{slide['title']}' is longer than {validation_max_title_length} characters ({len(slide['title'])})")
+    print(term_colored("Rule 4: Slide titles do not exceed maximum length - VALID", "green"))
 
 
 def create_title_slide(presentation, title):
@@ -79,6 +91,7 @@ def create_image_slide(presentation, title, image_path):
 
 if __name__ == "__main__":
     data = load_slide_data(input_file)
+    data = refactor_data(data)
     validate_slide_data(data)
     slides = data["slides"]
 

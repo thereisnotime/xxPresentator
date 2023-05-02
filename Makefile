@@ -33,13 +33,20 @@ help:
 .PHONY: all
 all: build run
 
+.PHONY: check_image
+check_image:
+ifeq ($(shell docker images -q $(IMAGE_NAME)),)
+	$(call log,Docker image not found, building it...)
+	@$(MAKE) build
+endif
+
 .PHONY: build
 build:
 	$(call log,Building base Docker image...)
 	docker build -t $(IMAGE_NAME) .
 
 .PHONY: run
-run: build
+run: check_image
 	$(call log,Creating presentation...)
 	docker run --rm -v $(shell pwd):/app $(IMAGE_NAME)
 	$(call log,Done! Your presentation is in $(pwd)/$(OUTPUT_FILE))
