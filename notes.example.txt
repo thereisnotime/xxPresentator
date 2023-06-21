@@ -1,0 +1,27 @@
+Slide 1 (Title): Open Source Solutions in SAST, DAST and SCA
+
+Speaker Notes: Welcome to this presentation about open source solutions in SAST, DAST and SCA. In this presentation, we will discuss the pros and cons of each tool and how they can benefit your business.
+
+Slide 2 (Text): Introduction
+
+Speaker Notes: Open source solutions in SAST, DAST and SCA are becoming increasingly popular due to their cost-effectiveness and flexibility. These tools can help businesses to identify vulnerabilities in their applications and ensure that they are secure.
+
+Slide 3 (Bullet Points): SAST (Static Application Security Testing)
+
+Speaker Notes: SAST is a tool that can help businesses to detect vulnerabilities early in the development process. It can be integrated with the CI/CD pipeline and has customizable rulesets. However, it has some limitations, such as false positives, limited coverage of runtime issues, and requires source code access.
+
+Slide 4 (Bullet Points): DAST (Dynamic Application Security Testing)
+
+Speaker Notes: DAST is a tool that can accurately detect vulnerabilities by simulating real-world attacks. It does not require access to source code and can provide a comprehensive view of the application's security. However, it has some limitations, such as limited coverage of backend systems, high rate of false positives, and limited scalability.
+
+Slide 5 (Bullet Points): SCA (Software Composition Analysis)
+
+Speaker Notes: SCA is a tool that can help businesses to identify open source components and detect known vulnerabilities. It can be integrated with the CI/CD pipeline and provides a comprehensive view of the application's security. However, it has some limitations, such as limited coverage of proprietary code, false positives, and limited support for some programming languages.
+
+Slide 6 (Text): Conclusion
+
+Speaker Notes: Open source solutions in SAST, DAST and SCA offer a cost-effective and flexible approach to application security. However, each tool has its own pros and cons that should be carefully considered before implementation. By choosing the right tool for your business, you can ensure that your applications are secure and protected from potential threats.
+
+Slide 7 (Title): Thank You
+
+Speaker Notes: Thank you for your attention. If you have any questions or would like to learn more about open source solutions in SAST, DAST and SCA, please feel free to contact us.

@@ -1,3 +1,5 @@
 *.pptx
 input.json
 .env
+!output.example.pptx
+notes.txt

@@ -8,6 +8,8 @@ A helper utility to generate presentations quickly.
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Generate content for the presentation](#generate-content-for-the-presentation)
+    - [Generate speaker notes for the presentation](#generate-speaker-notes-for-the-presentation)
     - [Generate a presentation](#generate-a-presentation)
     - [Options](#options)
     - [Slide options](#slide-options)
@@ -27,6 +29,18 @@ cd xxPresentator
 ```
 
 ## Usage
+
+### Generate content for the presentation
+
+```bash
+python3 generate.py
+```
+
+### Generate speaker notes for the presentation
+
+```bash
+python3 generate-notes.py
+```
 
 ### Generate a presentation
 
@@ -85,6 +99,7 @@ This is a small tool that I made for myself to generate presentations quickly. I
 - [ ] Add more slide templates.
 - [ ] Add random variation to the slide layouts.
 - [ ] Add more text formats.
+- [ ] Modify Makefile and Dockerfiles for the three different functions.
 - [ ] Add random image picker/generator for backgrounds and for slides.
 - [ ] Add pretty first slide with title, author and stylization.
 - [ ] Add pretty last slide with thanks, author and stylization.
