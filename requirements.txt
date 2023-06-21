@@ -1,2 +1,4 @@
 python-pptx==0.6.21
 termcolor
+openai
+python-dotenv
