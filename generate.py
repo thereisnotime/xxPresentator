@@ -17,7 +17,8 @@ example_file = "input.example.json"
 output_file = "input.json"
 prompt_file = "prompt.txt"
 example_input = open(example_file, "r").read()
-backstory = f"""You are writing a professional presentation in academic style. You must always respond with following json format that I will send in the next prompt that defines various types of slide pages from which all slides will be generated. I will give you a topic in my next prompt from which you must generate a presentation with texts following the previous JSON example I gave you."""
+example_input = example_input.replace("\n", " ")
+backstory = f"""You are writing a professional presentation in academic style. You must always respond with following json format that I will send in the next prompt that defines various types of slide pages from which all slides will be generated."""
 
 def send_prompt(prompt):
     return openai.ChatCompletion.create(
@@ -27,7 +28,7 @@ def send_prompt(prompt):
             {"role": "user", "content": example_input},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=4500,
+        max_tokens=3500,
         n=1,
         temperature=0.2,
     ).choices[0].message.content.strip()

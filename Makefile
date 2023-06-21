@@ -26,6 +26,7 @@ help:
 	@printf "$(COLOR_GREEN)$(MAKE_NAME) - v$(MAKE_VERSION) - available targets:$(COLOR_DEFAULT)\n\
 \t$(COLOR_YELLOW)help$(COLOR_DEFAULT)         Shows the help menu$(COLOR_DEFAULT)\n\
 \t$(COLOR_YELLOW)run$(COLOR_DEFAULT)          Generates the presentation$(COLOR_DEFAULT)\n\
+\t$(COLOR_YELLOW)content$(COLOR_DEFAULT)      Generates content for the presentation$(COLOR_DEFAULT)\n\
 \t$(COLOR_YELLOW)presentation$(COLOR_DEFAULT) Generates the presentation and open it$(COLOR_DEFAULT)\n\
 \t$(COLOR_YELLOW)clean$(COLOR_DEFAULT)        Deletes all artifacts and presentation$(COLOR_DEFAULT)\n\
 \t$(COLOR_YELLOW)build$(COLOR_DEFAULT)        Prepares the base image$(COLOR_DEFAULT)\n"
@@ -56,6 +57,11 @@ clean:
 	$(call log,Cleaning up artifacts...)
 	docker image rm $(IMAGE_NAME)
 	rm -rf ./$(OUTPUT_FILE)
+
+.PHONY: content
+presentation: clean build run
+	$(call log,Generating content...)
+	open ./$(OUTPUT_FILE)
 
 .PHONY: presentation
 presentation: clean build run

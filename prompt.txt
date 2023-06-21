@@ -1,1 +1,1 @@
-Presentation about open source solutions in SAST, DAST and SCA, it must be at least 25 slides long. Starting with introduction and ending with conclusion.
+Presentation about open source solutions in SAST, DAST and SCA explained for business people. It must include pros and cons for each tool. Presentation must end with a "title" type of slide. If the slide type is "text" it must have maximum of 45 words.

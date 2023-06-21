@@ -7,7 +7,7 @@
     {
       "title": "What is Neuroplasticity?",
       "type": "text",
-      "content": "Neuroplasticity, also known as brain plasticity, refers to the brain's ability to change and adapt its structure and function throughout a person's life. This includes creating new neural connections, strengthening or weakening existing connections, and reorganizing neural networks in response to new experiences, learning, and even injury."
+      "content": "Neuroplasticity, also known as brain plasticity, refers to the brain's ability to change and adapt its structure and function throughout a person's life."
     },
     {
       "title": "Neuroplasticity in Action",
@@ -15,36 +15,11 @@
       "image_path": "images/background.jpg"
     },
     {
-      "title": "Factors Influencing Neuroplasticity",
-      "type": "bullet_points",
-      "content": [
-        "Age",
-        "Environment",
-        "Experience",
-        "Genetics",
-        "Lifestyle factors (e.g., diet, exercise, sleep)"
-      ]
-    },
-    {
-      "title": "Benefits of Neuroplasticity",
-      "type": "bullet_points",
-      "content": [
-        "Enhanced learning and memory",
-        "Improved cognitive function",
-        "Increased resilience to brain aging",
-        "Facilitated recovery from brain injury",
-        "Support for mental health and well-being"
-      ]
-    },
-    {
       "title": "Ways to Promote Neuroplasticity",
       "type": "bullet_points",
       "content": [
         "Engage in lifelong learning",
-        "Participate in physical activity",
-        "Practice mindfulness and meditation",
-        "Maintain a healthy diet",
-        "Prioritize quality sleep"
+        "Participate in physical activity"
       ]
     }
   ]
