@@ -8,6 +8,7 @@ MAKE_NAME := xxPresentator
 MAKE_VERSION := 1.01
 IMAGE_NAME := pptx-generator
 OUTPUT_FILE := output.pptx
+OUTPUT_FOLDER := output
 
 # Define colors
 COLOR_DEFAULT := \033[0m
@@ -49,23 +50,24 @@ build:
 .PHONY: run
 run: check_image
 	$(call log,Creating presentation...)
-	docker run --rm -v $(shell pwd):/app $(IMAGE_NAME)
-	$(call log,Done! Your presentation is in $(pwd)/$(OUTPUT_FILE))
+	docker run --rm -v $(shell pwd)/output:/output $(IMAGE_NAME) $(ARGS)
+	$(call log,Done! Your presentation is in $(shell pwd)/$(OUTPUT_FILE))
 
 .PHONY: clean
 clean:
 	$(call log,Cleaning up artifacts...)
 	docker image rm $(IMAGE_NAME)
-	rm -rf ./$(OUTPUT_FILE)
+	rm -rf $(OUTPUT_FOLDER)/$(OUTPUT_FILE)
 
 .PHONY: content
 presentation: clean build run
 	$(call log,Generating content...)
-	open ./$(OUTPUT_FILE)
+	open $(OUTPUT_FOLDER)/$(OUTPUT_FILE)
+	make run ARGS="$(ARGS)"
 
 .PHONY: presentation
 presentation: clean build run
 	$(call log,Opening presentation...)
-	open ./$(OUTPUT_FILE)
+	open $(OUTPUT_FOLDER)/$(OUTPUT_FILE)
 
 .DEFAULT_GOAL := help

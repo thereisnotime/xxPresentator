@@ -6,22 +6,29 @@ A helper utility to generate presentations quickly.
 
 - [xxPresentator](#xxpresentator)
   - [Table of Contents](#table-of-contents)
+  - [Preresquisites](#preresquisites)
   - [Installation](#installation)
-  - [Usage](#usage)
-    - [Generate content for the presentation](#generate-content-for-the-presentation)
-    - [Generate speaker notes for the presentation](#generate-speaker-notes-for-the-presentation)
-    - [Generate a presentation](#generate-a-presentation)
-    - [Options](#options)
+    - [Usage](#usage)
+      - [Makefile](#makefile)
+      - [Docker](#docker)
+      - [Python](#python)
+    - [Output](#output)
     - [Slide options](#slide-options)
   - [Demo](#demo)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
   - [License](#license)
 
-## Installation
+## Preresquisites
 
-1. Make sure to have make, git and Docker installed.
-2. Run the following commands:
+- make
+- git
+- Docker
+- Python3
+- pip3
+- python3-venv
+
+## Installation
 
 ```bash
 git clone https://github.com/thereisnotime/xxPresentator
@@ -30,30 +37,32 @@ cd xxPresentator
 
 ## Usage
 
-### Generate content for the presentation
+- There are several different ways to use xxPresentator:
+- - Makefile
+- - Docker
+- - Python
+
+### Makefile
+
+The Makefile is the easiest way to use xxPresentator.
+- It will automatically install all dependencies and run the script.
+- It will also automatically clean up after itself.
 
 ```bash
-python3 generate.py
+make presentation ARGS="-arg -arg -arg -arg"
 ```
 
-### Generate speaker notes for the presentation
+When you are running the Makefile, you can pass arguments to the script by using the ARGS variable.
+You can specify:
 
-```bash
-python3 generate-notes.py
-```
+- -c / --content - for generating content;
+- -n / --notes - for generating notes;
+- -p / --presentation - for generating presentation;
+-  --prompt "string" - for overriding the default prompt.
 
-### Generate a presentation
+_A default prompt is used when no prompt is specified._
 
-1. Copy input.example.json to input.json and edit the contents to your liking.
-2. Run the following command:
-
-```bash
-make presentation
-```
-
-You now have "output.pptx" with your presentation.
-
-### Options
+- Options
 
 ```bash
 xxPresentator - v1.01 - available targets:
@@ -64,7 +73,51 @@ xxPresentator - v1.01 - available targets:
     build        Prepares the base image
 ```
 
-### Slide options
+### Docker
+
+1.Build the image:
+```bash
+docker build -t image_name .
+```
+
+2. Run the image:
+```bash
+docker run -v "$pwd/output:/output" image_name -arg -arg -arg
+```
+
+### Python
+1. Create a virtual environment:
+```bash
+virtualenv venv
+```
+
+2. Activate the virtual environment:
+```bash
+source venv/bin/activate
+```
+
+3. Install dependencies:
+```bash
+pip3 install -r requirements.txt
+```
+
+4. Run the script:
+```bash
+python3 main.py -arg -arg -arg -arg
+```
+
+_You can also run every script individually._
+```bash
+python3 generate_content.py
+python3 generate_notes.py
+python3 make_presentation.py
+```
+
+## Output
+
+The output is a .pptx file with the name "output.pptx" inside the output directory.
+
+## Slide options
 
 Take a look at the input.example.json file to see all the options available.
 
